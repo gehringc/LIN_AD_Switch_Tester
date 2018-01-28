@@ -1,0 +1,13 @@
+F:\Cam\STRG SW to LIN\WindowsApplication3\bin\Debug\LIN + AD Steering Switch Tester.exe.config
+F:\Cam\STRG SW to LIN\WindowsApplication3\bin\Debug\LIN + AD Steering Switch Tester.exe
+F:\Cam\STRG SW to LIN\WindowsApplication3\bin\Debug\LIN + AD Steering Switch Tester.pdb
+F:\Cam\STRG SW to LIN\WindowsApplication3\bin\Debug\LIN + AD Steering Switch Tester.xml
+F:\Cam\STRG SW to LIN\WindowsApplication3\bin\Debug\PICkitS.dll
+F:\Cam\STRG SW to LIN\WindowsApplication3\obj\Debug\LIN_AD_Steering.vbprojResolveAssemblyReference.cache
+F:\Cam\STRG SW to LIN\WindowsApplication3\obj\Debug\WindowsApplication3.Form1.resources
+F:\Cam\STRG SW to LIN\WindowsApplication3\obj\Debug\WindowsApplication3.Resources.resources
+F:\Cam\STRG SW to LIN\WindowsApplication3\obj\Debug\LIN_AD_Steering.vbproj.GenerateResource.Cache
+F:\Cam\STRG SW to LIN\WindowsApplication3\obj\Debug\LIN_AD_Steering.vbproj.CoreCompileInputs.cache
+F:\Cam\STRG SW to LIN\WindowsApplication3\obj\Debug\LIN + AD Steering Switch Tester.exe
+F:\Cam\STRG SW to LIN\WindowsApplication3\obj\Debug\LIN + AD Steering Switch Tester.xml
+F:\Cam\STRG SW to LIN\WindowsApplication3\obj\Debug\LIN + AD Steering Switch Tester.pdb

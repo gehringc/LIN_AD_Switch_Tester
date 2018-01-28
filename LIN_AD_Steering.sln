@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LIN_AD_Steering", "WindowsApplication3\LIN_AD_Steering.vbproj", "{CFAF0A6F-5CD3-4832-A701-C1A69ACBC8E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFAF0A6F-5CD3-4832-A701-C1A69ACBC8E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFAF0A6F-5CD3-4832-A701-C1A69ACBC8E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFAF0A6F-5CD3-4832-A701-C1A69ACBC8E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFAF0A6F-5CD3-4832-A701-C1A69ACBC8E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {837EACA0-3469-460E-99A9-D4E7EA3B0ABE}
+	EndGlobalSection
+EndGlobal
