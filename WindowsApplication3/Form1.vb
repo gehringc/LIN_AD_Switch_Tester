@@ -41,15 +41,20 @@ Public Class Form1
     Dim serialPorts As String()                                  'COM ports retrieved when searching for arduino
     Dim linOK As Boolean                                         'Used to indicate whether LIN device is set up or nah
 
+    'Called when application is opened for first time, so load the components
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadArduino()
         LoadLIN()
         BeginMainProcess()
     End Sub
 
+    'Sets up the port to handle the SerialPort to handle the data from the Arduino
+    'The user can select the correct port if more than one COM port is detected
     Private Sub LoadArduino()
         Dim portName As String = ""
+        'Get all of COM ports available
         serialPorts = SerialPort.GetPortNames()
+        'If there are no ports found, close the port and update the Form
         If serialPorts.Length() = 0 Then
             If ArduinoPort.IsOpen Then
                 ArduinoPort.Close()
@@ -57,8 +62,9 @@ Public Class Form1
             ArduinoStatus.Text = "NO ARDUINO FOUND"
             ArduinoStatus.ForeColor = Color.Red
             portName = "VOID"
-            delayTimer50.Enabled = False
+            'delayTimer50.Enabled = False
         Else
+            'If 1 port found, automatically select it. If multiple, have the user select the port 
             If serialPorts.Length() = 1 Then
                 ArduinoPort.PortName = serialPorts(0)
                 portName = serialPorts(0)
@@ -69,12 +75,14 @@ Public Class Form1
                 ArduinoStatus.Text = "Select Arduino Port:"
                 ArduinoPort.PortName = ComboBox1.SelectedItem
             End If
+            'Once the port is selected, open it and let the data flow!
             If ArduinoPort.IsOpen <> True Then
                 ArduinoPort.Open()
             End If
         End If
     End Sub
 
+    'Sets up the LIN Analyzer interface
     Private Sub LoadLIN()
         If (PICkitS.Basic.Initialize_MyDevice(0, PID)) Then
             If (PICkitS.LIN.Configure_PICkitSerial_For_LIN()) Then
@@ -113,6 +121,9 @@ Public Class Form1
         End If
     End Sub
 
+    'The timers follow the LIN (LDF) schedule. Because the precision is not critical for this test, I
+    'used Windows Forms timers. See my other examples for running System Timers outside of the GUI thread
+    'Enable all timers and start the first one to begin main loop.
     Private Sub BeginMainProcess()
         delayTimer50.Enabled = True
         delayTimer50.Start()
@@ -120,22 +131,26 @@ Public Class Form1
         LINsendTimer.Enabled = True
     End Sub
 
+    'Called when the application is exiting, make sure to dispose all potentially running processes
     Private Sub Form1_Close(sender As Object, e As EventArgs) Handles MyBase.FormClosing
         PICkitS.Device.Cleanup()
         UnregisterEvents()
         ArduinoPort.Close()
     End Sub
-
+    
+    'Creat two objects to handle two separate reception events, per the PICkitS.LIN API
     Private Sub RegisterEvents(ByVal s As PICkitS.LIN)
         OnAnswerSource = s
         OnReceiveSource = s
     End Sub
 
+    'Clear the objects
     Private Sub UnregisterEvents()
         OnAnswerSource = Nothing
         OnReceiveSource = Nothing
     End Sub
 
+    '30ms timer that sends the Master request to the slave Switch 
     Private Sub DelayTimer_Tick(sender As Object, e As EventArgs) Handles delayTimer.Tick
         delayTimer.Stop()
         delayTimer50.Start()
@@ -146,6 +161,7 @@ Public Class Form1
         End If
     End Sub
 
+    '50ms timer that sends the Master request to the slave Switch and then Updates the Form GUI 
     Private Sub DelayTimer50_Tick(sender As Object, e As EventArgs) Handles delayTimer50.Tick
         delayTimer50.Stop()
         LINsendTimer.Start()
@@ -157,6 +173,7 @@ Public Class Form1
         UpdateForm()
     End Sub
 
+    '50ms timer that sends the Master frame to the slave Switch and then Updates the Form GUI 
     Private Sub LINsendTimer_Tick(sender As Object, e As EventArgs) Handles LINsendTimer.Tick
         LINsendTimer.Stop()
         delayTimer.Start()
